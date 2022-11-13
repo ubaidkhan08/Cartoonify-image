@@ -13,7 +13,7 @@ def classify(sepal_length, sepal_width, petal_length, petal_width):
 
     
 def main():
-    st.title("Major Project")
+    st.title("Cartoonify Your Image!")
     html_temp = """
     <div style="background-color:teal ;padding:10px">
     <h2 style="color:white;text-align:center;">Iris Classification</h2>
@@ -21,10 +21,10 @@ def main():
     """
 
     st.subheader('Upload a PNG/JPG image file:')
-	IMG = st.file_uploader("Choose a file") 
+    IMG = st.file_uploader("Choose a file") 
    
 
-    if st.button('Classify'):
+    if st.button('Cartoonify!'):
         output=classify(sepal_length, sepal_width, petal_length, petal_width)
         st.success('The species of the plant is {}'.format(output[1:-1]))
        
