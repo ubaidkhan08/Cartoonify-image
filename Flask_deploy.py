@@ -8,6 +8,7 @@ import os
 import easygui
 import tk as tk
 from tk import *
+import global_state
     
 def main():
     st.title("Cartoonify Your Image!")
