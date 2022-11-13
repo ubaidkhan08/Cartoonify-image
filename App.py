@@ -45,23 +45,6 @@ def main():
     st.subheader('US Natural Gas Imports')
     NGI = st.number_input('(in Trillion cubic feet)',key=2)
     
-    if st.button('Predict Natural Gas Price'):
-        output= classify(COP,USDI,TT,CT,NGP,GDP,NGR,NGC,NGI)
-        #st.success()
-        st.success(output)
-
-        
-def classify(COP,USDI,TT,CT,NGP,GDP,NGR,NGC,NGI):
-    from sklearn.preprocessing import StandardScaler
-    scaler = StandardScaler()
-
-    inputs = [[COP,USDI,TT,CT,NGP,GDP,NGR,NGC,NGI]]
-
-    from joblib import dump, load
-    log_model = load('naturalgas_predict.joblib')
-    predictionn = ((log_model.predict([inputs[0]])))
-    predictionnn = round(predictionn[0],3)
-    return('Predicted Price: {}').format(predictionnn)
     
     
 if __name__=='__main__':
