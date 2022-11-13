@@ -6,6 +6,7 @@ import sys
 import matplotlib.pyplot as plt
 import os
 import tkinter as tk
+import _tkinter
     
 def main():
     st.title("Cartoonify Your Image!")
