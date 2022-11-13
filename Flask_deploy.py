@@ -24,10 +24,8 @@ def main():
     else:
         IMG = Image.open(file)
         image = np.array(IMG)
-
-    if st.button('Cartoonify!'):
-        output = cartoonify(image)
-        st.success(output)
+        cartoon = cartoonify(image)
+        st.image(cartoon, use_column_width=True)
            
             
 def cartoonify(ImagePath):
