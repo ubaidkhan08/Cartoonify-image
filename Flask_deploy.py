@@ -5,9 +5,6 @@ import imageio #to read image stored at particular path
 import sys
 import matplotlib.pyplot as plt
 import os
-import easygui
-import tk as tk
-from tk import *
     
 def main():
     st.title("Cartoonify Your Image!")
