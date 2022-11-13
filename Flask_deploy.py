@@ -5,6 +5,7 @@ import imageio #to read image stored at particular path
 import sys
 import matplotlib.pyplot as plt
 import os
+from PIL import Image
 
     
 def main():
@@ -17,7 +18,7 @@ def main():
 
     st.subheader('Upload a PNG/JPG image file:')
     IMG = st.file_uploader("Choose a file")
-    IM = st.image(IMG)
+    IM = Image.open(IMG)
 
     if st.button('Cartoonify!'):
         output = cartoonify(IM)
