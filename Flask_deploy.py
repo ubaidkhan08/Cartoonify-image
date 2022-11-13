@@ -7,6 +7,18 @@ import matplotlib.pyplot as plt
 import os
 from PIL import Image
 
+def cartoonify(ImagePath):
+   
+    originalmage = cv2.cvtColor(ImagePath, cv2.COLOR_BGR2RGB)
+
+    if option == 'Pencil Sketch':     
+        value = st.sidebar.slider('Tune the brightness of your sketch (the higher the value, the brighter your sketch)', 0.0, 300.0, 250.0)
+        kernel = st.sidebar.slider('Tune the boldness of the edges of your sketch (the higher the value, the bolder the edges)', 1, 99, 25, step=2)
+        gray_blur = cv2.GaussianBlur(originalmage, (kernel, kernel), 0)
+        cartoon = cv2.divide(originalmage, gray_blur, scale=value)
+            
+    return cartoon
+
     
 def main():
     st.title("Cartoonify Your Image!")
@@ -23,26 +35,11 @@ def main():
     
     else:
         IMG = Image.open(file)
-        image = np.array(IMG)
-        
-        opt = st.sidebar.selectbox('Which cartoon filters would you like to apply?',
-    ('Pencil Sketch'))
-        
-        cartoon = cartoonify(image,opt)
-        st.image(cartoon, use_column_width=True)
+        image = np.array(IMG)        
+        C = cartoonify(image)
+        st.image(C, use_column_width=True)
            
-            
-def cartoonify(ImagePath, option):
-    
-    originalmage = cv2.cvtColor(ImagePath, cv2.COLOR_BGR2RGB)
-
-    if option == 'Pencil Sketch':     
-        value = st.sidebar.slider('Tune the brightness of your sketch (the higher the value, the brighter your sketch)', 0.0, 300.0, 250.0)
-        kernel = st.sidebar.slider('Tune the boldness of the edges of your sketch (the higher the value, the bolder the edges)', 1, 99, 25, step=2)
-        gray_blur = cv2.GaussianBlur(originalmage, (kernel, kernel), 0)
-        cartoon = cv2.divide(originalmage, gray_blur, scale=value)
-            
-    return cartoon
+         
 
 
 if __name__=='__main__':
