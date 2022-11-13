@@ -8,4 +8,5 @@ streamlit
 easygui
 imageio
 tk
+python3-tk
 global_state
