@@ -5,7 +5,7 @@ import imageio #to read image stored at particular path
 import sys
 import matplotlib.pyplot as plt
 import os
-import easygui
+
     
 def main():
     st.title("Cartoonify Your Image!")
@@ -17,8 +17,6 @@ def main():
 
     st.subheader('Upload a PNG/JPG image file:')
     IMG = st.file_uploader("Choose a file")
-    IMG = easygui.fileopenbox()
-   
 
     if st.button('Cartoonify!'):
         output = cartoonify(IMG)
