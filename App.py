@@ -1,92 +1,68 @@
 import streamlit as st
 from joblib import dump, load
-import cv2 #for image processing
-import easygui #to open the filebox
-import numpy as np #to store image
-import imageio #to read image stored at particular path
-import sys
-import matplotlib.pyplot as plt
-import os
-import tkinter as tk
-from tkinter import filedialog
-from tkinter import *
-from PIL import ImageTk, Image
-    
+import numpy as np
+import pandas as pd
+
+
 def main():
-    st.title("Cartoonify Your Images!")
+   
+    st.title("Natural Gas Prediction Model!")
     html_temp = """
-    <div style="background-color:teal ;padding:10px">
-    <h2 style="color:white;text-align:center;">Iris Classification</h2>
+    <div style="background-color:teal ;padding:20px">
     </div>
     """
-
-    st.subheader('Upload a PNG/JPG image file:')
-	IMG = st.file_uploader("Choose a file")    
-
-
-def cartoonify(ImagePath):
     
-    originalmage = cv2.imread(ImagePath)
-    originalmage = cv2.cvtColor(originalmage, cv2.COLOR_BGR2RGB)
+    st.subheader('Crude Oil Price')
+    COP = st.number_input('(in Dollars)')
 
-    # confirm that image is chosen
-    if originalmage is None:
-        print("Can not find any image. Choose appropriate file")
-        sys.exit()
 
-    ReSized1 = cv2.resize(originalmage, (1700, 2078))
-    #plt.imshow(ReSized1, cmap='gray')
+    st.subheader('US Dollar Index')
+    USDI = st.number_input('Enter')
 
-    #converting an image to grayscale
-    grayScaleImage = cv2.cvtColor(originalmage, cv2.COLOR_BGR2GRAY)
-    ReSized2 = cv2.resize(grayScaleImage, (1700, 2078))
-    #plt.imshow(ReSized2, cmap='gray')
 
-    #applying median blur to smoothen an image
-    smoothGrayScale = cv2.medianBlur(grayScaleImage, 5)
-    ReSized3 = cv2.resize(smoothGrayScale, (1700, 2078))
-    #plt.imshow(ReSized3, cmap='gray')
+    st.subheader('Texas Temperature')
+    TT = st.slider('(In Fahrenheit)', 0.0, 110.0)
 
-    #retrieving the edges for cartoon effect
-    #by using thresholding technique
-    getEdge = cv2.adaptiveThreshold(smoothGrayScale, 255, 
-      cv2.ADAPTIVE_THRESH_MEAN_C, 
-      cv2.THRESH_BINARY, 9, 9)
 
-    ReSized4 = cv2.resize(getEdge, (1700, 2078))
-    #plt.imshow(ReSized4, cmap='gray')
+    st.subheader('California Temperature')
+    CT = st.slider('(In Fahrenheit)', 0.0, 105.0)
 
-    #applying bilateral filter to remove noise 
-    #and keep edge sharp as required
-    colorImage = cv2.bilateralFilter(originalmage, 9, 300, 300)
-    ReSized5 = cv2.resize(colorImage, (1700, 2078))
-    #plt.imshow(ReSized5, cmap='gray')
+    
+    st.subheader('Natural Gas Production in the USA')
+    NGP = st.number_input('(in Trillion cubic feet)')
 
-    #masking edged image with our "BEAUTIFY" image
-    cartoonImage = cv2.bitwise_and(colorImage, colorImage, mask=getEdge)
 
-    ReSized6 = cv2.resize(cartoonImage, (1700, 2078))
-    #plt.imshow(ReSized6, cmap='gray')
+    st.subheader('GDP of USA')
+    GDP = st.number_input('(in Billion Dollars)')
 
-    # Plotting the whole transition
-    images=[ReSized1, ReSized2, ReSized4, ReSized6]
-    fig, axes = plt.subplots(2,2, figsize=(8,8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
-    for i, ax in enumerate(axes.flat):
-        ax.imshow(images[i], cmap='gray')
 
-    plt.show()
-   
+    st.subheader('US Natural Gas Reserves')
+    NGR = st.number_input('(in Trillion cubic feet)',key=0)
 
-if st.button('Cartoonify your image!'):
-    output = cartoonify(IMG)
-    st.success(output)
+    st.subheader('US Natural Gas Consumption')
+    NGC = st.number_input('(in Trillion cubic feet)',key=1)
 
-    #st.image(ReSized6, caption='Here is your Cartooni-fied image!')
-
+    st.subheader('US Natural Gas Imports')
+    NGI = st.number_input('(in Trillion cubic feet)',key=2)
+    
+    if st.button('Predict Natural Gas Price'):
+        output= classify(COP,USDI,TT,CT,NGP,GDP,NGR,NGC,NGI)
+        #st.success()
+        st.success(output)
 
         
+def classify(COP,USDI,TT,CT,NGP,GDP,NGR,NGC,NGI):
+    from sklearn.preprocessing import StandardScaler
+    scaler = StandardScaler()
+
+    inputs = [[COP,USDI,TT,CT,NGP,GDP,NGR,NGC,NGI]]
+
+    from joblib import dump, load
+    log_model = load('naturalgas_predict.joblib')
+    predictionn = ((log_model.predict([inputs[0]])))
+    predictionnn = round(predictionn[0],3)
+    return('Predicted Price: {}').format(predictionnn)
+    
+    
 if __name__=='__main__':
     main()
-
-
-   
