@@ -9,7 +9,6 @@ import easygui
 import tk as tk
 from tk import *
 from tkinter import filedialog
-import global_state
     
 def main():
     st.title("Cartoonify Your Image!")
