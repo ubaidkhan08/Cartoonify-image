@@ -8,3 +8,4 @@ streamlit
 easygui
 imageio
 tk
+global_state
