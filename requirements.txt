@@ -1,4 +1,4 @@
-opencv-python
+opencv-python-headless
 numpy>=1.11.0
 cython>=0.28.5
 scipy>=0.15.1
