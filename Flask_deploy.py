@@ -75,7 +75,7 @@ def cartoonify(ImagePath):
     #for i, ax in enumerate(axes.flat):
         #ax.imshow(images[i], cmap='gray')
 
-    return (plt.imshow(ReSized6, cmap='gray')
+    return (plt.imshow(ReSized6, cmap='gray'))
 
 
 
