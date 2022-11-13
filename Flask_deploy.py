@@ -10,12 +10,11 @@ from PIL import Image
 def cartoonify(ImagePath):
    
     originalmage = cv2.cvtColor(ImagePath, cv2.COLOR_BGR2RGB)
-
-    if option == 'Pencil Sketch':     
-        value = st.sidebar.slider('Tune the brightness of your sketch (the higher the value, the brighter your sketch)', 0.0, 300.0, 250.0)
-        kernel = st.sidebar.slider('Tune the boldness of the edges of your sketch (the higher the value, the bolder the edges)', 1, 99, 25, step=2)
-        gray_blur = cv2.GaussianBlur(originalmage, (kernel, kernel), 0)
-        cartoon = cv2.divide(originalmage, gray_blur, scale=value)
+      
+    value = st.sidebar.slider('Tune the brightness of your sketch (the higher the value, the brighter your sketch)', 0.0, 300.0, 250.0)
+    kernel = st.sidebar.slider('Tune the boldness of the edges of your sketch (the higher the value, the bolder the edges)', 1, 99, 25, step=2)
+    gray_blur = cv2.GaussianBlur(originalmage, (kernel, kernel), 0)
+    cartoon = cv2.divide(originalmage, gray_blur, scale=value)
             
     return cartoon
 
