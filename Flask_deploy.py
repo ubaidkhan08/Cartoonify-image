@@ -15,22 +15,25 @@ def main():
     <h2 style="color:white;text-align:center;">Iris Classification</h2>
     </div>
     """
+    
+    file = st.file_uploader("Upload a PNG/JPG image file:", type=["jpg", "png"])
 
-    st.subheader('Upload a PNG/JPG image file:')
-    IMG = st.file_uploader("Choose a file")
-    I = Image.open(IMG)
-    st.image(I)
+    if file is None:
+        st.text("Dude, you're embarassing me!")
+        
+    else:
+        IMG = Image.open(file)
+        image = np.array(IMG)
 
     if st.button('Cartoonify!'):
-        output = cartoonify(st.image(I))
+        output = cartoonify(image)
         st.success(output)
         
       
     
 def cartoonify(ImagePath):
     
-    originalmagee = cv2.imread(ImagePath)
-    originalmage = cv2.cvtColor(originalmagee, cv2.COLOR_BGR2RGB)
+    originalmage = cv2.cvtColor(ImagePath, cv2.COLOR_BGR2RGB)
 
     # confirm that image is chosen
     if originalmage is None:
