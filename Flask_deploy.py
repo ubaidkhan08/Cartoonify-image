@@ -17,13 +17,8 @@ def main():
     """
     
     file = st.file_uploader("Upload a PNG/JPG image file:", type=["jpg", "png"])
-
-    if file is None:
-        st.text("Dude, you're embarassing me!")
-        
-    else:
-        IMG = Image.open(file)
-        image = np.array(IMG)
+    IMG = Image.open(file)
+    image = np.array(IMG)
 
     if st.button('Cartoonify!'):
         output = cartoonify(image)
@@ -75,12 +70,12 @@ def cartoonify(ImagePath):
     #plt.imshow(ReSized6, cmap='gray')
 
     # Plotting the whole transition
-    images=[ReSized1, ReSized2, ReSized4, ReSized6]
-    fig, axes = plt.subplots(2,2, figsize=(8,8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
-    for i, ax in enumerate(axes.flat):
-        ax.imshow(images[i], cmap='gray')
+    #images=[ReSized1, ReSized2, ReSized4, ReSized6]
+    #fig, axes = plt.subplots(2,2, figsize=(8,8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
+    #for i, ax in enumerate(axes.flat):
+        #ax.imshow(images[i], cmap='gray')
 
-    plt.show()
+    return (plt.imshow(ReSized6, cmap='gray')
 
 
 
