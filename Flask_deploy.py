@@ -17,17 +17,18 @@ def main():
 
     st.subheader('Upload a PNG/JPG image file:')
     IMG = st.file_uploader("Choose a file")
+    IM = st.image(IMG)
 
     if st.button('Cartoonify!'):
-        output = cartoonify(IMG)
+        output = cartoonify(IM)
         st.success(output)
         
       
     
 def cartoonify(ImagePath):
     
-    originalmage = cv2.imread(ImagePath)
-    originalmage = cv2.cvtColor(originalmage, cv2.COLOR_BGR2RGB)
+    originalmagee = cv2.imread(ImagePath)
+    originalmage = cv2.cvtColor(originalmagee, cv2.COLOR_BGR2RGB)
 
     # confirm that image is chosen
     if originalmage is None:
