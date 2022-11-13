@@ -5,7 +5,7 @@ matplotlib>=1.4.3
 pandas>=0.19
 streamlit
 easygui
-tkinter<=8.6.12
+tkinter==8.6.12
 imageio
 PIL
 os
