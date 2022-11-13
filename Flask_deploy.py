@@ -50,7 +50,7 @@ def cartoonify(ImagePath, option):
         gray = cv2.medianBlur(originalmage, kernel) 
         edges = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9) 
     
-        color = cv2.detailEnhance(ImagePath, sigma_s=smooth, sigma_r=edge_preserve)
+        color = cv2.detailEnhance(originalmage, sigma_s=smooth, sigma_r=edge_preserve)
         cartoon = cv2.bitwise_and(color, color, mask=edges) 
         
         
