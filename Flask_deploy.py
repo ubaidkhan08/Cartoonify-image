@@ -17,8 +17,13 @@ def main():
     """
     
     file = st.file_uploader("Upload a PNG/JPG image file:", type=["jpg", "png"])
-    IMG = Image.open(file)
-    image = np.array(IMG)
+    
+    if file is None:
+    st.text("You haven't uploaded a valid image file yet.")
+    
+    else:
+        IMG = Image.open(file)
+        image = np.array(IMG)
 
     if st.button('Cartoonify!'):
         output = cartoonify(image)
@@ -67,7 +72,7 @@ def cartoonify(ImagePath):
     cartoonImage = cv2.bitwise_and(colorImage, colorImage, mask=getEdge)
 
     ReSized6 = cv2.resize(cartoonImage, (1700, 2078))
-    #plt.imshow(ReSized6, cmap='gray')
+    A = plt.imshow(ReSized6, cmap='gray')
 
     # Plotting the whole transition
     #images=[ReSized1, ReSized2, ReSized4, ReSized6]
@@ -75,7 +80,7 @@ def cartoonify(ImagePath):
     #for i, ax in enumerate(axes.flat):
         #ax.imshow(images[i], cmap='gray')
 
-    return (plt.imshow(ReSized6, cmap='gray'))
+    return A
 
 
 
