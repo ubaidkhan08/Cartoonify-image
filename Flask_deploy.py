@@ -13,19 +13,15 @@ def classify(sepal_length, sepal_width, petal_length, petal_width):
 
     
 def main():
-    st.title("Plant Species Prediction Model")
+    st.title("Major Project")
     html_temp = """
     <div style="background-color:teal ;padding:10px">
     <h2 style="color:white;text-align:center;">Iris Classification</h2>
     </div>
     """
-    
-    st.markdown(html_temp, unsafe_allow_html=True)
-    sepal_length=st.slider('Select Sepal Length', 0.0, 10.0)
-    sepal_width=st.slider('Select Sepal Width', 0.0, 10.0)
-    petal_length=st.slider('Select Petal Length', 0.0, 10.0)
-    petal_width=st.slider('Select Petal Width', 0.0, 10.0)
-    inputs=np.array([[sepal_length, sepal_width, petal_length, petal_width]]).reshape(1, -1)
+
+    st.subheader('Upload a PNG/JPG image file:')
+	IMG = st.file_uploader("Choose a file") 
    
 
     if st.button('Classify'):
