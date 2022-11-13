@@ -7,4 +7,3 @@ pandas>=0.19
 streamlit
 easygui
 imageio
-tk
