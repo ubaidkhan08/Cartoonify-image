@@ -1,5 +1,4 @@
 import streamlit as st
-from joblib import dump, load
 import cv2 #for image processing
 import easygui #to open the filebox
 import numpy as np #to store image
