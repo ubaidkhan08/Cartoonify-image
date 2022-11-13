@@ -8,4 +8,3 @@ streamlit
 easy_gui
 imageio
 tk
-python3-tkinter
