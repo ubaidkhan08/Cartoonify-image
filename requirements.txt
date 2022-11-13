@@ -8,4 +8,4 @@ streamlit
 easygui
 imageio
 tk
-tkinter
+Tkinter
