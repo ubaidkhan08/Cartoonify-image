@@ -8,6 +8,7 @@ import os
 import easygui
 import tk as tk
 from tk import *
+apt-get install python-tk
     
 def main():
     st.title("Cartoonify Your Image!")
