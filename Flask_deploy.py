@@ -19,7 +19,7 @@ def main():
     st.subheader('Upload a PNG/JPG image file:')
     IMG = st.file_uploader("Choose a file")
     I = Image.open(IMG)
-    IM = st.image(I)
+    st.image(I)
 
     if st.button('Cartoonify!'):
         output = cartoonify(IM)
