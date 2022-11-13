@@ -19,7 +19,7 @@ def main():
     file = st.file_uploader("Upload a PNG/JPG image file:", type=["jpg", "png"])
     
     if file is None:
-    st.text("You haven't uploaded a valid image file yet.")
+        st.text("You haven't uploaded a valid image file yet.")
     
     else:
         IMG = Image.open(file)
