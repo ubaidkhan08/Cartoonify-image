@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import os
 import tk as tk
 from tk import *
-from PIL import ImageTk, Image
     
 def main():
     st.title("Cartoonify Your Image!")
