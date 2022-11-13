@@ -16,13 +16,12 @@ def main():
 
     st.subheader('Upload a PNG/JPG image file:')
     IMG = st.file_uploader("Choose a file")
-    IMG = str(IMG)
+    IMG = easygui.fileopenbox()
    
 
     if st.button('Cartoonify!'):
-        #output = cartoonify(IMG)
-        #st.success(output)
-        print(IMG)
+        output = cartoonify(IMG)
+        st.success(output)
         
       
     
