@@ -8,5 +8,4 @@ streamlit
 easygui
 imageio
 tk
-python3-tk
-global_state
+sudo apt-get install python3-tk
