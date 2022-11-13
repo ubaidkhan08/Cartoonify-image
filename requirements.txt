@@ -6,7 +6,6 @@ pandas>=0.19
 streamlit
 easygui
 imageio
-PIL
 os
 sys
 cv2
