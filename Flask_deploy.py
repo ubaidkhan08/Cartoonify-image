@@ -5,9 +5,8 @@ import imageio #to read image stored at particular path
 import sys
 import matplotlib.pyplot as plt
 import os
-import tkinter as tk
-from tkinter import filedialog
-from tkinter import *
+import tk as tk
+from tk import *
 from PIL import ImageTk, Image
     
 def main():
