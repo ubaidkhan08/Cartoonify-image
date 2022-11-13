@@ -22,7 +22,7 @@ def main():
     st.image(I)
 
     if st.button('Cartoonify!'):
-        output = cartoonify(Image.open(IMG))
+        output = cartoonify(st.image(I))
         st.success(output)
         
       
