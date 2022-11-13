@@ -20,8 +20,9 @@ def main():
    
 
     if st.button('Cartoonify!'):
-        output = cartoonify(IMG)
-        st.success(output)
+        #output = cartoonify(IMG)
+        #st.success(output)
+        print(IMG)
         
       
     
