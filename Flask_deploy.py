@@ -55,13 +55,13 @@ def main():
     </div>
     """
     
-    file = st.file_uploader("Upload a PNG/JPG image file:", type=["jpg", "png"])
+    upload = st.file_uploader("Upload a PNG/JPG image file:", type=["jpg", "png"])
     
-    if file is None:
+    if upload is None:
         st.text("You haven't uploaded a valid image file yet.")
     
     else:
-        IMG = Image.open(file)
+        IMG = Image.open(upload)
         image = np.array(IMG)
         option = st.sidebar.selectbox('Which cartoon filters would you like to apply?',
         ('Pencil Sketch', 'Detail Enhancement', 'Pencil Edges', 'Bilateral Filter')) 
@@ -69,12 +69,11 @@ def main():
         st.text("Your original image:")
         st.image(IMG, use_column_width=True)
         st.text("   ")
+        st.text("   ")
         
         C = cartoonify(image,option)
         st.image(C, use_column_width=True)
            
          
-
-
 if __name__=='__main__':
     main()
