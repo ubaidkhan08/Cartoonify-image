@@ -48,7 +48,7 @@ def cartoonify(img, cartoon):
 
     
 def main():
-    st.title("Cartoonify Your Image!")
+    st.title("Image Cartooni-fier by Ubaid")
     html_temp = """
     <div style="background-color:teal ;padding:10px">
     <h2 style="color:white;text-align:center;">Iris Classification</h2>
